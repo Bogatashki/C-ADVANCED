@@ -1,3 +1,3 @@
 # CSharp-ADVANCED
-CSharp Exerci
+CSharp Exercises
 C#
