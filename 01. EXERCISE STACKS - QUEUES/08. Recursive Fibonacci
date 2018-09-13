@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+
+namespace _08._Recursive_Fibonacci
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+                long first = 1;
+                long second = 1;
+            Dictionary<int, long> fibonacci = new Dictionary<int, long>();
+            fibonacci.Add(1, 1);
+            fibonacci.Add(2, 1);
+
+            for (int i = 3; i <= input; i++)
+            {                
+                long third = first + second;
+                fibonacci.Add(i, third);
+                first = second;
+                second = third;
+            }
+            
+            Console.WriteLine(fibonacci[input]);
+        }
+    }
+}
