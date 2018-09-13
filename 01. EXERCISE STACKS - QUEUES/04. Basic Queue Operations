@@ -1,0 +1,40 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _04._Basic_Queue_Operations
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split()
+                .Select(int.Parse).ToArray();
+            int[] inputQueue = Console.ReadLine().Split().Select(int.Parse).ToArray();
+
+            Queue<int> queue = new Queue<int>(inputQueue);
+            int queueCount = input[0];
+            int removeCount = input[1];
+            int surchNumber = input[2];
+            if (queueCount == removeCount)
+            {
+                Console.WriteLine(0);
+                return;
+            }
+            for (int i = 0; i < removeCount; i++)
+            {
+                queue.Dequeue();
+            }
+            foreach (var item in queue)
+            {
+                if (surchNumber == item)
+                {
+                    Console.WriteLine("true");
+                    return;
+                }
+            }
+            Console.WriteLine(queue.Min());
+        }
+    }
+}
