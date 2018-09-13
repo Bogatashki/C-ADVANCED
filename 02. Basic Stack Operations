@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+namespace _02._Basic_Stack_Operations
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            string[] inputStack = Console.ReadLine().Split(' ');
+            int popCounter = int.Parse(input[1]);
+            int stackLength = int.Parse(input[0]);
+            string SearchNumber = input[2];
+            int minNumber = int.Parse(inputStack[0]);
+            Stack<string> stack = new Stack<string>(inputStack);
+            if (popCounter != stackLength)
+            {
+                for (int i = 0; i < popCounter; i++)
+                {
+                    stack.Pop();
+                }
+                foreach (var item in stack)
+                {
+                    if (item == SearchNumber)
+                    {
+                        Console.WriteLine("true");
+                        return;
+                    }
+                    else
+                    {
+                        int itemNumber = int.Parse(item);
+                        if (minNumber > itemNumber)
+                        {
+                            minNumber = itemNumber;
+                        }
+                    }
+                }
+                Console.WriteLine(minNumber);
+            }
+            else
+            {
+                Console.WriteLine(0);
+            }
+        }
+    }
+}
