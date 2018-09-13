@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _11._Poisonous_Plants
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberPlants = int.Parse(Console.ReadLine());
+            int[] plants = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int days = 0;
+
+            while (true)
+            {
+                Queue<int> survivingPlants = new Queue<int>();
+                survivingPlants.Enqueue(plants[0]);
+                bool end = false;
+
+                for (int i = 1; i < plants.Length; i++)
+                {
+                    int plant = plants[i - 1];
+                    int nextPlant = plants[i];
+                    if (plant >= nextPlant)
+                    {
+                        survivingPlants.Enqueue(plants[i]);
+                    }
+                    else
+                    {
+                        end = true;
+                    }
+                }
+                if (!end)
+                {
+                    break;
+                }
+                days++;
+                plants = survivingPlants.ToArray();
+            }
+            Console.WriteLine(days);
+        }
+    }
+}
