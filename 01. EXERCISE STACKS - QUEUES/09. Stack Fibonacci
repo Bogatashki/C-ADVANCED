@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+
+namespace _09._Stack_Fibonacci
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            long first = 0;
+            long second = 1;
+            Stack<long> fibonacciStack = new Stack<long>();
+            fibonacciStack.Push(first);
+            fibonacciStack.Push(second);                     
+
+            for (int i = 2; i <= input; i++)
+            {
+                long third = first + second;
+                fibonacciStack.Push(third);
+                first = second;
+                second = third;
+            }
+            Console.WriteLine(fibonacciStack.Pop());
+        }
+    }
+}
