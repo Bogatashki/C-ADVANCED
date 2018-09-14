@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+namespace _6._Traffic_Light
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int carsPerGreenLight = int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            Queue<string> carsQueue = new Queue<string>();
+            int carsPassed = 0;
+
+            while (input != "end")
+            {
+                if (input == "green")
+                {
+                    int carsThatCanPass = Math.Min(carsPerGreenLight, carsQueue.Count);
+                    for (int counter = 0; counter < carsThatCanPass; counter++)
+                    {
+                        Console.WriteLine($"{carsQueue.Dequeue()} passed!");
+                        carsPassed++;
+                    }
+                }
+                else
+                {
+                    carsQueue.Enqueue(input);
+
+                }
+                input = Console.ReadLine();
+            }
+            Console.WriteLine($"{carsPassed} cars passed the crossroads.");
+        }
+    }
+}
